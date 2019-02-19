@@ -36,8 +36,15 @@ namespace PieShop
         {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
-            app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller = Home}/{action=Index}/{id?}"
+                    );
+            });
         }
     }
 }
